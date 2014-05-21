@@ -1,0 +1,18 @@
+# NPM
+node_modules
+
+# bower
+bower_components
+
+# Mac finder artifacts
+.DS_Store
+
+# Local files
+temp
+
+
+# SASS
+.sass-cache
+
+# node
+npm-debug.log
