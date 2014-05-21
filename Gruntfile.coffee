@@ -1,20 +1,21 @@
 module.exports = (grunt) ->
 
-  grunt.registerTask 'default', ['clean', 'coffee', 'transpile', 'emblem', 'compass', 'concat', 'copy']
+  grunt.registerTask 'default', ['clean:all', 'coffee', 'transpile', 'emblem', 'compass', 'concat', 'copy', 'clean:js', 'clean:transpiled']
 
-
-  grunt.loadNpmTasks 'grunt-es6-module-transpiler'
-  grunt.loadNpmTasks 'grunt-contrib-sass'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-contrib-clean'
-  grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-contrib-concat'
-  grunt.loadNpmTasks 'grunt-emblem'
-  grunt.loadNpmTasks 'grunt-contrib-compass'
-
+  
   grunt.initConfig
-    clean: ['tmp']
 
+    ###########
+    # "Housekeeping" - consuela
+    ###########
+    clean: 
+      all: 'tmp'
+      js: 'tmp/js'
+      transpiled: 'tmp/transpiled'
+
+    ###########
+    # Compile Coffee to JS
+    ###########
     coffee:
       compile:
         options:
@@ -24,7 +25,10 @@ module.exports = (grunt) ->
             rename: (destBase, destPath) ->
               return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
           )
-
+    
+    ###########
+    # Transpile ES6 modules to AMD
+    ###########
     transpile:
       main: 
         type: "amd"
@@ -35,6 +39,9 @@ module.exports = (grunt) ->
           dest: 'tmp/transpiled'
         ]
 
+    ###########
+    # Concatenate vendor files and app files
+    ###########
     concat:
       options:
         separator: ';'
@@ -56,6 +63,9 @@ module.exports = (grunt) ->
         dest:
           'tmp/build/app.js'
 
+    ###########
+    # Compile and concatenate *.sass files
+    ###########
     compass:
       dist:
         options:
@@ -63,20 +73,26 @@ module.exports = (grunt) ->
           sassDir: "app/assets/stylesheets"
           cssDir: "tmp/build"
 
+    ###########
+    # Copy static files over
+    # TODO: Copy all statics inside app/assets
+    ###########
     copy:
       main:
         files: [
-            # includes files within path
             expand: true
             flatten: true
             src: ['app/index.html']
             dest: 'tmp/build'
         ]
 
+    ###########
+    # Compile and concatenate *.emblem templates in a single file
+    ###########
     emblem:
       compile:
         files:
-          'tmp/js/templates.js': ['app/**/*.emblem'] #compile and concat into single file
+          'tmp/js/templates.js': ['app/**/*.emblem']
         
         options:
           dependencies:
@@ -84,3 +100,6 @@ module.exports = (grunt) ->
             ember:      'bower_components/ember/ember.js',
             emblem:     'bower_components/emblem/dist/emblem.js',
             handlebars: 'bower_components/handlebars/handlebars.js'
+
+  # autoload any grunt-* tasks installed
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
