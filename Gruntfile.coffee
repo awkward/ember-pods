@@ -1,6 +1,7 @@
 module.exports = (grunt) ->
 
-  grunt.registerTask 'default', ['clean', 'coffee', 'transpile', 'emblem', 'sass', 'concat', 'copy']
+  grunt.registerTask 'default', ['clean', 'coffee', 'transpile', 'emblem', 'compass', 'concat', 'copy']
+
 
   grunt.loadNpmTasks 'grunt-es6-module-transpiler'
   grunt.loadNpmTasks 'grunt-contrib-sass'
@@ -9,9 +10,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-emblem'
+  grunt.loadNpmTasks 'grunt-contrib-compass'
 
   grunt.initConfig
     clean: ['tmp']
+
     coffee:
       compile:
         options:
@@ -53,17 +56,12 @@ module.exports = (grunt) ->
         dest:
           'tmp/build/app.js'
 
-    sass:
+    compass:
       dist:
-        files: [
-          expand: true
-          flatten: true
-          cwd: 'app/'
-          src: ['**/*.sass']
-          dest: 'tmp/build/css'
-          ext: '.css'
-        ]
-    
+        options:
+          require: ['sass-globbing']
+          sassDir: "app/assets/stylesheets"
+          cssDir: "tmp/build"
 
     copy:
       main:
