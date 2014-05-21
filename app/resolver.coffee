@@ -12,9 +12,6 @@ ResolverHelpers =
     return require('router')["default"]
 
   multiResolver: (what) ->
-    # how should we resolve ... ?
-    #component:component-test 
-
     {type, name} = ResolverHelpers.parse(what)
     try
       module = require("pods/#{name}/#{type}")
