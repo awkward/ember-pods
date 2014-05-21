@@ -16,3 +16,4 @@ temp
 
 # node
 npm-debug.log
+/tmp/
