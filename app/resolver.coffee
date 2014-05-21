@@ -59,7 +59,7 @@ Resolver = Ember.DefaultResolver.extend
       return module if module
 
     # let ember fix this one
-    console.info 'Couldn\'t resolve: ' + what
+    #console.info 'Couldn\'t resolve: ' + what
     return @_super(what)
 
 `export default Resolver`
