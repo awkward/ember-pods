@@ -8,7 +8,7 @@ Ember.js starter kit based on pods file structure
 ## Includes:
 
 - CoffeeScript
-- Sass + Compass
+- Stylus + Nib
 - ES6 module system (using AMD + Almond.js)
 - Emblem templating
-- Grunt build system
+- Grunt + livereload
