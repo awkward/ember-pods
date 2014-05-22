@@ -1,5 +1,5 @@
 module.exports = (grunt) ->
-  require('time-grunt')(grunt)
+  #require('time-grunt')(grunt)
 
   # grunt - build, watch
   grunt.registerTask 'default', ['build']
@@ -86,37 +86,14 @@ module.exports = (grunt) ->
     ###########
     # Compile and concatenate *.sass files
     ###########
-    compass:
-      dist:
-        options:
-          require: ['sass-globbing']
-          sassDir: "app/assets/stylesheets"
-          cssDir:  "tmp/build/stylesheets"
-          environment: 'development'
-          outputStyle: 'compressed'
-
     stylus:
       compile:
-        # options:
-        #   paths: ['path/to/import', 'another/to/import'],
-        #   urlfunc: 'embedurl', #// use embedurl('test.png') in our code to trigger Data URI embedding
-        #   use: [
-        #     require('fluidity') #// use stylus plugin at compile time
-        #   ],
-        #   import: [      //  @import 'foo', 'bar/moo', etc. into every .styl file
-        #     'foo',       //  that is compiled. These might be findable based on values you gave
-        #     'bar/moo'    //  to `paths`, or a plugin you added under `use`
-        #   ]
-        
         files:
           'tmp/build/stylesheets/main.css': [
             'app/assets/stylesheets/main.styl'
             'app/components/**/*.styl'
             'app/pods/**/*.styl'
           ]
-          #'path/to/another.css': ['path/to/sources/*.styl', 'path/to/more/*.styl'] #// compile and concat into single file
-      
-
 
     ###########
     # Copy static files over
@@ -166,8 +143,8 @@ module.exports = (grunt) ->
           livereload: true
 
       stylesheets:
-        files: 'app/**/*.sass'
-        tasks: ['compass']
+        files: 'app/**/*.styl'
+        tasks: ['stylus']
         options:
           spawn: false
           livereload: true
