@@ -14,13 +14,18 @@ Ember.js starter kit based on pods file structure
 - Grunt + livereload
 
 ## Using the generator
+From within a terminal at root level, run:
+
  `./generate pod <podname>`
 
- * TODO:
+ TODO:
 
- `./generate model <modelname>`
- `./generate component <componentname>`
+ * `./generate model <modelname>`
+ * `./generate component <componentname>`
 
 ## Starting the project
-`grunt` - build the project, watch and livereload
-`grunt server` - build the project, watch, livereload and spawn a development server
+
+From within a terminal at root level, run:
+
+* `grunt` - build the project, watch and livereload
+* `grunt server` - build the project, watch, livereload and spawn a development server
