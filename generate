@@ -1,0 +1,26 @@
+#!/usr/bin/env coffee
+
+grunt = require('grunt')
+{type, name} = {type: process.argv[2],name: process.argv[3]}
+
+printHelp = ->
+  console.log 'Usage: ./generate component|pod|model'
+
+if process.argv.length isnt 4
+  console.log 'Incorrect number of parameters provided.'
+  printHelp()
+
+else
+  switch type
+    when 'pod'
+      grunt.tasks(['generate:pod'], {name:name})
+
+    when 'component'
+      grunt.tasks(['generate:component'], {name:name})
+
+    when 'model'
+      grunt.tasks(['generate:model'], {name:name})
+
+    else
+      console.log 'Unknown command.'
+      printHelp();

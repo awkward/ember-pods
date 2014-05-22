@@ -16,6 +16,56 @@ module.exports = (grunt) ->
   grunt.registerTask 'build:once', ['clean:all', 'coffee', 'transpile', 'emblem', 'stylus', 'concat', 'copy']
 
 
+  grunt.registerTask 'generate:pod', ->
+    grunt.log.writeln 'Firing up the pod generator'
+
+    podPrefix = "app/pods/"
+    podName   = grunt.option('name')
+    podNameUpper = podName.toUpperCase();
+    podPath   = podName.replace(".", "/")
+
+    # determine CSS class
+    cssClass = podName.replace(".","-")
+    cssClass = cssClass.charAt(0).toUpperCase()+cssClass.slice(1)
+    
+
+    # read template files where needed
+    stylesheetContents  = grunt.file.read('generator_templates/pod/stylesheet.styl')
+    templateContents    = grunt.file.read('generator_templates/pod/template.emblem')
+    viewContents        = grunt.file.read('generator_templates/pod/view.coffee')
+
+    # process templates
+    stylesheetContentsProcessed = grunt.template.process(stylesheetContents, {data: {podName: podName, cssClass: cssClass}})
+    viewContentsProcessed       = grunt.template.process(viewContents,       {data: {podName: podName, cssClass: cssClass}})
+    templateContentsProcessed   = grunt.template.process(templateContents,   {data: {podName: podName}})
+
+    # write templates
+
+
+    grunt.file.write(podPrefix+podPath+"/"+podName+".styl", stylesheetContentsProcessed)
+    grunt.file.write(podPrefix+podPath+"/view.coffee",      viewContentsProcessed)
+    grunt.file.write(podPrefix+podPath+"/template.emblem",  templateContentsProcessed)
+
+    grunt.file.copy('generator_templates/pod/controller.coffee', podPrefix+podPath+"/controller.coffee")
+    grunt.file.copy('generator_templates/pod/route.coffee', podPrefix+podPath+"/route.coffee")
+    
+    grunt.log.writeln 'Generated pod named ' + podName + ' at location ' +podPath
+
+
+
+
+
+  grunt.registerTask 'generate:model', ->
+    grunt.log.writeln 'Firing up the model generator'
+    modelName = grunt.option('name')
+    grunt.log.writeln 'Generating model named ' + modelName
+
+  grunt.registerTask 'generate:component', ->
+    grunt.log.writeln 'Firing up the component generator'
+    componentName = grunt.option('name')
+    grunt.log.writeln 'Generating component named ' + componentName
+
+
   ################
   # Configure tasks
   ################
