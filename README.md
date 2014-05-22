@@ -12,3 +12,11 @@ Ember.js starter kit based on pods file structure
 - ES6 module system (using AMD + Almond.js)
 - Emblem templating
 - Grunt + livereload
+
+## using the generator
+ ./generate pod <podname>
+
+ * TODO:
+
+ ./generate model <modelname>
+ ./generate component <componentname>
