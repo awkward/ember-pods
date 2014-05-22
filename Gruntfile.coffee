@@ -1,16 +1,37 @@
 module.exports = (grunt) ->
+  require('time-grunt')(grunt)
 
-  grunt.registerTask 'default', ['clean:all', 'coffee', 'transpile', 'emblem', 'compass', 'concat', 'copy', 'clean:js', 'clean:transpiled']
-  
+  # grunt - build, watch
+  grunt.registerTask 'default', ['build']
+
+  # grunt server - build, watch, livereload and serve using node server
+  # grunt.registerTask 'server', []
+
+  # grunt build - build, watch and livereload
+  # TODO: Implement watcher and livereload
+
+  grunt.registerTask 'build', ['build:once', 'watch']
+
+  # grunt build:production - build once for production (concatenated, minified, gzipped)
+
+  # grunt.registerTask 'build:production', ->
+  #   grunt.log.writeln 'Building for production'
+
+
+  # grunt build:once - Builds all assets only once
+  grunt.registerTask 'build:once', ['clean:all', 'coffee', 'transpile', 'emblem', 'stylus', 'concat', 'copy']
+
+
+  ################
+  # Configure tasks
+  ################
   grunt.initConfig
 
     ###########
     # Housekeeping
     ###########
     clean: 
-      all:        'tmp'
-      js:         'tmp/js'
-      transpiled: 'tmp/transpiled'
+      all: 'tmp'
 
     ###########
     # Compile Coffee to JS
@@ -71,6 +92,31 @@ module.exports = (grunt) ->
           require: ['sass-globbing']
           sassDir: "app/assets/stylesheets"
           cssDir:  "tmp/build/stylesheets"
+          environment: 'development'
+          outputStyle: 'compressed'
+
+    stylus:
+      compile:
+        # options:
+        #   paths: ['path/to/import', 'another/to/import'],
+        #   urlfunc: 'embedurl', #// use embedurl('test.png') in our code to trigger Data URI embedding
+        #   use: [
+        #     require('fluidity') #// use stylus plugin at compile time
+        #   ],
+        #   import: [      //  @import 'foo', 'bar/moo', etc. into every .styl file
+        #     'foo',       //  that is compiled. These might be findable based on values you gave
+        #     'bar/moo'    //  to `paths`, or a plugin you added under `use`
+        #   ]
+        
+        files:
+          'tmp/build/stylesheets/main.css': [
+            'app/assets/stylesheets/main.styl'
+            'app/components/**/*.styl'
+            'app/pods/**/*.styl'
+          ]
+          #'path/to/another.css': ['path/to/sources/*.styl', 'path/to/more/*.styl'] #// compile and concat into single file
+      
+
 
     ###########
     # Copy static files over
@@ -104,6 +150,27 @@ module.exports = (grunt) ->
             emblem:     'bower_components/emblem/dist/emblem.js',
             handlebars: 'bower_components/handlebars/handlebars.js'
 
+    watch:
+      scripts:
+        files: 'app/**/*.coffee'
+        tasks: ['newer:coffee', 'transpile', 'concat:app']
+        options:
+          spawn: false
+          livereload: true
+
+      templates:
+        files: 'app/**/*.emblem'
+        tasks: ['newer:emblem', 'concat:app']
+        options:
+          spawn: false
+          livereload: true
+
+      stylesheets:
+        files: 'app/**/*.sass'
+        tasks: ['compass']
+        options:
+          spawn: false
+          livereload: true
   
   # autoload any grunt-* tasks installed
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
