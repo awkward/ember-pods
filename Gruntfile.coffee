@@ -1,16 +1,15 @@
 module.exports = (grunt) ->
 
   grunt.registerTask 'default', ['clean:all', 'coffee', 'transpile', 'emblem', 'compass', 'concat', 'copy', 'clean:js', 'clean:transpiled']
-
   
   grunt.initConfig
 
     ###########
-    # "Housekeeping" - consuela
+    # Housekeeping
     ###########
     clean: 
-      all: 'tmp'
-      js: 'tmp/js'
+      all:        'tmp'
+      js:         'tmp/js'
       transpiled: 'tmp/transpiled'
 
     ###########
@@ -31,7 +30,7 @@ module.exports = (grunt) ->
     ###########
     transpile:
       main: 
-        type: "amd"
+        type: 'amd'
         files: [
           expand: true,
           cwd: 'tmp/js/',
@@ -53,7 +52,7 @@ module.exports = (grunt) ->
             'bower_components/ember/ember.js'
             'bower_components/ember-data/ember-data.js'
           ]
-        dest: 'tmp/build/vendor.js'
+        dest: 'tmp/build/script/vendor.js'
 
       app:
         src: [
@@ -61,7 +60,7 @@ module.exports = (grunt) ->
           'tmp/transpiled/**/*.js'
         ]
         dest:
-          'tmp/build/app.js'
+          'tmp/build/script/app.js'
 
     ###########
     # Compile and concatenate *.sass files
@@ -71,20 +70,24 @@ module.exports = (grunt) ->
         options:
           require: ['sass-globbing']
           sassDir: "app/assets/stylesheets"
-          cssDir: "tmp/build"
+          cssDir:  "tmp/build/stylesheets"
 
     ###########
     # Copy static files over
-    # TODO: Copy all statics inside app/assets
     ###########
     copy:
       main:
         files: [
-            expand: true
-            flatten: true
-            src: ['app/index.html']
-            dest: 'tmp/build'
+          expand:  true
+          flatten: true
+          src:     ['app/index.html']
+          dest:    'tmp/build'
         ]
+      assets:
+        expand: true
+        cwd: 'app/assets/'
+        src: ['**/*', '!stylesheets/main.sass']
+        dest: 'tmp/build/assets/'
 
     ###########
     # Compile and concatenate *.emblem templates in a single file
@@ -101,5 +104,6 @@ module.exports = (grunt) ->
             emblem:     'bower_components/emblem/dist/emblem.js',
             handlebars: 'bower_components/handlebars/handlebars.js'
 
+  
   # autoload any grunt-* tasks installed
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
