@@ -1,22 +1,16 @@
 module.exports = (grunt) ->
-  #require('time-grunt')(grunt)
-
   # grunt - build, watch
   grunt.registerTask 'default', ['build']
 
   # grunt server - build, watch, livereload and serve using node server
-  # grunt.registerTask 'server', []
+  grunt.registerTask 'server', ['build:once', 'express', 'watch']
 
-  # grunt build - build, watch and livereload
-  # TODO: Implement watcher and livereload
-
+  # grunt build - build, watch + livereload
   grunt.registerTask 'build', ['build:once', 'watch']
 
-  # grunt build:production - build once for production (concatenated, minified, gzipped)
-
+  # grunt build:production - build once for production (concatenated, minified, gzipped
   # grunt.registerTask 'build:production', ->
   #   grunt.log.writeln 'Building for production'
-
 
   # grunt build:once - Builds all assets only once
   grunt.registerTask 'build:once', ['clean:all', 'coffee', 'transpile', 'emblem', 'stylus', 'concat', 'copy']
@@ -126,7 +120,10 @@ module.exports = (grunt) ->
             ember:      'bower_components/ember/ember.js',
             emblem:     'bower_components/emblem/dist/emblem.js',
             handlebars: 'bower_components/handlebars/handlebars.js'
-
+    
+    ###########
+    # Watch CoffeeScript, Stylus and templates for changes
+    ###########
     watch:
       scripts:
         files: 'app/**/*.coffee'
@@ -148,6 +145,16 @@ module.exports = (grunt) ->
         options:
           spawn: false
           livereload: true
+
+    ###########
+    # Spawn a basic development server to serve assets
+    ###########
+    express:
+      dev:
+        options:
+          opts: ['node_modules/coffee-script/bin/coffee']
+          script: 'server/server.coffee'
+    
   
   # autoload any grunt-* tasks installed
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
