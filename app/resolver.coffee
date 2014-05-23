@@ -67,7 +67,7 @@ Resolver = Ember.DefaultResolver.extend
       return module if module
 
     # let ember fix this one
-    Ember.Logger.info "Resolver couldn't find #{name}. Handing it over to Ember"
+    Ember.Logger.info "Resolver couldn't find #{what}. Handing it over to Ember"
     return @_super(what)
 
 `export default Resolver`
