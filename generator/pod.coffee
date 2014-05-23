@@ -29,4 +29,4 @@
       grunt.file.copy('generator/templates/pod/controller.coffee',  podPrefix+podPath+"/controller.coffee")
       grunt.file.copy('generator/templates/pod/route.coffee',       podPrefix+podPath+"/route.coffee")
       
-      grunt.log.writeln 'Generated pod named ' + podName + ' at location ' +podPath
+      grunt.log.writeln "Generated pod named #{podName} at location #{podPath}"
