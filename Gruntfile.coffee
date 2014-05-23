@@ -82,11 +82,8 @@ module.exports = (grunt) ->
     stylus:
       compile:
         files:
-          'tmp/build/stylesheets/main.css': [
-            'app/assets/stylesheets/main.styl'
-            'app/components/**/*.styl'
-            'app/pods/**/*.styl'
-          ]
+          'tmp/build/stylesheets/main.css': 'app/assets/stylesheets/main.styl'
+          
 
     ###########
     # Copy static files over
