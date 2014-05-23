@@ -13,6 +13,13 @@ ResolverHelpers =
 
   multiResolver: (what) ->
     {type, name} = ResolverHelpers.parse(what)
+
+    # support nested pods
+    dashedName = Ember.String.dasherize(name)
+    if dashedName.indexOf('-') > -1
+      name = dashedName.replace('-', '/')
+
+    # try to resolve
     try
       module = require("pods/#{name}/#{type}")
       return module["default"]
@@ -35,6 +42,10 @@ ResolverHelpers =
       componentName = name.substring(11, name.length)
       return Ember.TEMPLATES["app/components/#{componentName}/template"]
 
+    # support nested views
+    if name.indexOf('.')
+      name = name.replace('.', '/')
+
     # return ordinary template    
     return Ember.TEMPLATES["app/pods/#{name}/template"]
 
@@ -56,7 +67,7 @@ Resolver = Ember.DefaultResolver.extend
       return module if module
 
     # let ember fix this one
-    #console.info 'Couldn\'t resolve: ' + what
+    Ember.Logger.info "Resolver couldn't find #{name}. Handing it over to Ember"
     return @_super(what)
 
 `export default Resolver`
