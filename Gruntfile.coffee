@@ -55,7 +55,7 @@ module.exports = (grunt) ->
         files: [
           expand: true,
           cwd: 'tmp/js/',
-          src: ['**/*.js'],
+          src: ['**/*.js', '!helpers/**/*.js'],
           dest: 'tmp/transpiled'
         ]
 
@@ -78,6 +78,7 @@ module.exports = (grunt) ->
       app:
         src: [
           'tmp/js/templates.js',
+          'tmp/js/helpers/**/*.js'
           'tmp/transpiled/**/*.js'
         ]
         dest:

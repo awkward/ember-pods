@@ -21,6 +21,9 @@ else
     when 'model'
       grunt.tasks(['generate:model'], {name:name})
 
+    when 'helper'
+      grunt.tasks(['generate:helper'], {name:name})
+
     else
       console.log 'Unknown command.'
       printHelp();
