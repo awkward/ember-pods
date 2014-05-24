@@ -16,12 +16,9 @@ Ember.js starter kit based on pods file structure
 ## Using the generator
 From within a terminal at root level, run:
 
- `./generate pod <podname>`
-
- TODO:
-
- * `./generate model <modelname>`
- * `./generate component <componentname>`
+* `./generate pod <podname>`
+* `./generate model <modelname>`
+* `./generate component <componentname>`
 
 ## Starting the project
 
