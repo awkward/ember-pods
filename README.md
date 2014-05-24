@@ -19,6 +19,7 @@ From within a terminal at root level, run:
 * `./generate pod <podname>`
 * `./generate model <modelname>`
 * `./generate component <componentname>`
+* `./generate helper <helpername>`
 
 ## Starting the project
 
