@@ -21,7 +21,7 @@
   ],
   "devDependencies": {
     "ember": "~1.5.1",
-    "ember-data": "~0.0.14",
+    "ember-data": "1.0.0-beta.7",
     "almond": "~0.2.9",
     "emblem": "~0.3.16"
   }

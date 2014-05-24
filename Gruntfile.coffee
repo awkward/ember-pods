@@ -16,6 +16,12 @@ module.exports = (grunt) ->
   grunt.registerTask 'build:once', ['clean:all', 'coffee', 'transpile', 'emblem', 'stylus', 'concat', 'copy']
 
 
+  # shorthand method to get all the required *.styl files
+  importsCssBundle = () ->
+    imports = grunt.file.expand({cwd: "app/assets/stylesheets/imports/"}, '**/*.styl')
+    imports.push('nib')
+    return imports
+
   ################
   # Configure tasks
   ################
@@ -78,15 +84,18 @@ module.exports = (grunt) ->
           'tmp/build/script/app.js'
 
     ###########
-    # Compile and concatenate *.sass files
+    # Compile and concatenate *.styl files
     ###########
     stylus:
       compile:
+        options:
+          paths: ['app/assets/stylesheets/imports'] 
+          import: importsCssBundle()
         files:
-          'tmp/build/stylesheets/main.css': [
+          'tmp/build/stylesheets/main.css':[
             'app/assets/stylesheets/main.styl'
-            'app/components/**/*.styl'
             'app/pods/**/*.styl'
+            'app/components/**/*.styl'
           ]
 
     ###########
@@ -154,7 +163,11 @@ module.exports = (grunt) ->
         options:
           opts: ['node_modules/coffee-script/bin/coffee']
           script: 'server/server.coffee'
-    
+  
+
   
   # autoload any grunt-* tasks installed
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
+
+  # load generator tasks
+  grunt.task.loadTasks 'generator'
