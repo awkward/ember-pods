@@ -9,6 +9,6 @@ module.exports = (grunt) ->
     modelPath       = modelName.replace(".", "/")
 
     # copy model template
-    grunt.file.copy("generator/templates/model/model.coffee" ,"#{modelPrefix}#{modelName}.coffee")
+    grunt.file.copy(".ember-pods/templates/model/model.coffee" ,"#{modelPrefix}#{modelName}.coffee")
 
     grunt.log.writeln "Generated model named  #{modelName} at #{modelPath}"

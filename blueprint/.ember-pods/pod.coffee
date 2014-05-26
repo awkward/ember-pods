@@ -13,9 +13,9 @@
       cssClass = cssClass.charAt(0).toUpperCase()+cssClass.slice(1)
 
       # read template files where needed
-      stylesheetContents  = grunt.file.read('generator/templates/pod/stylesheet.styl')
-      templateContents    = grunt.file.read('generator/templates/pod/template.emblem')
-      viewContents        = grunt.file.read('generator/templates/pod/view.coffee')
+      stylesheetContents  = grunt.file.read('.ember-pods/templates/pod/stylesheet.styl')
+      templateContents    = grunt.file.read('.ember-pods/templates/pod/template.emblem')
+      viewContents        = grunt.file.read('.ember-pods/templates/pod/view.coffee')
 
       # process templates
       stylesheetContentsProcessed = grunt.template.process(stylesheetContents, {data: {podName: podName, cssClass: cssClass}})
@@ -26,7 +26,7 @@
       grunt.file.write("#{podPrefix}#{podPath}/#{podName}.styl",    stylesheetContentsProcessed)
       grunt.file.write("#{podPrefix}#{podPath}/view.coffee",        viewContentsProcessed)
       grunt.file.write("#{podPrefix}#{podPath}/template.emblem",    templateContentsProcessed)
-      grunt.file.copy('generator/templates/pod/controller.coffee',  podPrefix+podPath+"/controller.coffee")
-      grunt.file.copy('generator/templates/pod/route.coffee',       podPrefix+podPath+"/route.coffee")
-      
+      grunt.file.copy('.ember-pods/templates/pod/controller.coffee',  podPrefix+podPath+"/controller.coffee")
+      grunt.file.copy('.ember-pods/templates/pod/route.coffee',       podPrefix+podPath+"/route.coffee")
+
       grunt.log.writeln "Generated pod named #{podName} at location #{podPath}"

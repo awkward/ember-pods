@@ -11,11 +11,11 @@ module.exports = (grunt) ->
     # determine CSS class
     cssClass = componentName.replace(".","-")
     cssClass = cssClass.charAt(0).toUpperCase()+cssClass.slice(1)
-    
+
     # read template files where needed
-    stylesheetContents  = grunt.file.read('generator/templates/component/stylesheet.styl')
-    templateContents    = grunt.file.read('generator/templates/component/template.emblem')
-    componentContents   = grunt.file.read('generator/templates/component/component.coffee')
+    stylesheetContents  = grunt.file.read('.ember-pods/templates/component/stylesheet.styl')
+    templateContents    = grunt.file.read('.ember-pods/templates/component/template.emblem')
+    componentContents   = grunt.file.read('.ember-pods/templates/component/component.coffee')
 
     # process templates
     stylesheetContentsProcessed = grunt.template.process(stylesheetContents, {data: {componentName: componentName, cssClass: cssClass}})

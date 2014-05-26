@@ -1,6 +1,5 @@
 #!/usr/bin/env coffee
 
-grunt        = require('grunt')
 {type, name} = {type: process.argv[2],name: process.argv[3]}
 exec         = require('child_process').exec
 
@@ -10,12 +9,22 @@ printHelp = ->
 if process.argv.length is 3
   switch type
     when 'init'
-      exec('npm install grunt && cp ./bin/ember-pods/blueprint ./')
+      console.log 'Installing dependencies...'
+      exec 'npm install grunt', (err) ->
+        return console.log err if err
+        exec "cp -r #{__dirname}/blueprint/* #{process.cwd()} && cp -r #{__dirname}/blueprint/.ember-pods #{process.cwd()}", (err) ->
+          return console.log err if err
+          exec "npm install && bower install", (err) ->
+            return console.log err if err
+            console.log 'Created new project'
     else
       console.log 'Unknown command.'
       printHelp()
 
-else if process.argv.length 4
+else if process.argv.length is 4
+  grunt = require("#{process.cwd()}/node_modules/grunt")
+  grunt.file.setBase(process.cwd())
+
   switch type
     when 'pod'
       grunt.tasks(['generate:pod'], {name:name})

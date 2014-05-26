@@ -30,7 +30,7 @@ module.exports = (grunt) ->
     ###########
     # Housekeeping
     ###########
-    clean: 
+    clean:
       all: 'tmp'
 
     ###########
@@ -45,12 +45,12 @@ module.exports = (grunt) ->
             rename: (destBase, destPath) ->
               return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
           )
-    
+
     ###########
     # Transpile ES6 modules to AMD
     ###########
     transpile:
-      main: 
+      main:
         type: 'amd'
         files: [
           expand: true,
@@ -90,7 +90,7 @@ module.exports = (grunt) ->
     stylus:
       compile:
         options:
-          paths: ['app/assets/stylesheets/imports'] 
+          paths: ['app/assets/stylesheets/imports']
           import: importsCssBundle()
         files:
           'tmp/build/stylesheets/main.css':[
@@ -123,14 +123,14 @@ module.exports = (grunt) ->
       compile:
         files:
           'tmp/js/templates.js': ['app/**/*.emblem']
-        
+
         options:
           dependencies:
             jquery:     'bower_components/jquery/dist/jquery.js',
             ember:      'bower_components/ember/ember.js',
             emblem:     'bower_components/emblem/dist/emblem.js',
             handlebars: 'bower_components/handlebars/handlebars.js'
-    
+
     ###########
     # Watch CoffeeScript, Stylus and templates for changes
     ###########
@@ -164,11 +164,11 @@ module.exports = (grunt) ->
         options:
           opts: ['node_modules/coffee-script/bin/coffee']
           script: 'server/server.coffee'
-  
 
-  
+
+
   # autoload any grunt-* tasks installed
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
 
   # load generator tasks
-  grunt.task.loadTasks 'generator'
+  grunt.task.loadTasks '.ember-pods'

@@ -8,8 +8,8 @@ module.exports = (grunt) ->
     helperNameUpper  = helperName.toUpperCase()
 
     # read the helper template
-    helperContents  = grunt.file.read('generator/templates/helper/helper.coffee')
-    
+    helperContents  = grunt.file.read('.ember-pods/templates/helper/helper.coffee')
+
     # parse the helper template
     helperContentsProcessed = grunt.template.process(helperContents, {data: {helperName: helperName}})
 
