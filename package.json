@@ -2,14 +2,18 @@
   "name": "ember-pods",
   "version": "0.0.1",
   "description": "Ember starter kit based on a pods file structure",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "main": "generate",
+  "author": "Awkward",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {
-    "matchdep": "^0.3.0"
-  }
+  "bin": {
+    "emberpods": "./bin/ember-pods"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awkward/ember-pods.git"
+  },
+  "bugs": {
+    "url": "https://github.com/awkward/ember-pods/issues"
+  },
+  "homepage": "https://github.com/awkward/ember-pods"
 }
