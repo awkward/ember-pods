@@ -6,7 +6,7 @@
   "author": "Awkward",
   "license": "MIT",
   "bin": {
-    "emberpods": "./bin/ember-pods"
+    "emberpods": "./generate"
   },
   "repository": {
     "type": "git",
