@@ -5,16 +5,18 @@ grunt        = require('grunt')
 exec         = require('child_process').exec
 
 printHelp = ->
-  console.log 'Usage: ./generate component|pod|model'
+  console.log 'Usage: `emberpods init` or `emberpods component|pod|model <filename>`'
 
-if process.argv.length isnt 4
-  console.log 'Incorrect number of parameters provided.'
-  printHelp()
-
-else
+if process.argv.length is 3
   switch type
     when 'init'
       exec('npm install grunt && cp ./bin/ember-pods/blueprint ./')
+    else
+      console.log 'Unknown command.'
+      printHelp()
+
+else if process.argv.length 4
+  switch type
     when 'pod'
       grunt.tasks(['generate:pod'], {name:name})
 
@@ -29,4 +31,7 @@ else
 
     else
       console.log 'Unknown command.'
-      printHelp();
+      printHelp()
+else
+  console.log 'Incorrect number of parameters provided.'
+  printHelp()
