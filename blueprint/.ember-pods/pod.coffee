@@ -6,10 +6,10 @@
       podPrefix     = "app/pods/"
       podName       = grunt.option('name')
       podNameUpper  = podName.toUpperCase()
-      podPath       = podName.replace(".", "/")
+      podPath       = podName.replace(/\./g, "/")
 
       # determine CSS class
-      cssClass = podName.replace(".","-")
+      cssClass = podName.replace(/\./g,"-")
       cssClass = cssClass.charAt(0).toUpperCase()+cssClass.slice(1)
 
       # read template files where needed

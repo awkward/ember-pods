@@ -6,10 +6,10 @@ module.exports = (grunt) ->
     componentPrefix     = "app/components/"
     componentName       = grunt.option('name')
     componentNameUpper  = componentName.toUpperCase()
-    componentPath       = componentName.replace(".", "/")
+    componentPath       = componentName.replace(/\./g, "/")
 
     # determine CSS class
-    cssClass = componentName.replace(".","-")
+    cssClass = componentName.replace(/\./g, "-")
     cssClass = cssClass.charAt(0).toUpperCase()+cssClass.slice(1)
 
     # read template files where needed

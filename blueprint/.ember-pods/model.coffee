@@ -6,7 +6,7 @@ module.exports = (grunt) ->
     modelPrefix     = "app/models/"
     modelName       = grunt.option('name')
     modelNameUpper  = modelName.toUpperCase()
-    modelPath       = modelName.replace(".", "/")
+    modelPath       = modelName.replace(/\./g, "/")
 
     # copy model template
     grunt.file.copy(".ember-pods/templates/model/model.coffee" ,"#{modelPrefix}#{modelName}.coffee")
