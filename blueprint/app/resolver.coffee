@@ -37,6 +37,10 @@ ResolverHelpers =
   templateResolver: (what) ->
     {type, name} = ResolverHelpers.parse(what)
 
+    # looking for partial?
+    if name.substring(0, 1) is "_"
+      return Ember.TEMPLATES["app/partials/#{name}"]
+
     # looking for component?
     if name.substring(0, 11) is "components/"
       componentName = name.substring(11, name.length)
