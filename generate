@@ -38,6 +38,9 @@ else if process.argv.length is 4
     when 'helper'
       grunt.tasks(['generate:helper'], {name:name})
 
+    when 'partial'
+      grunt.tasks(['generate:partial'], {name:name})
+
     else
       console.log 'Unknown command.'
       printHelp()
