@@ -17,3 +17,6 @@ temp
 # node
 npm-debug.log
 /tmp/
+
+# test
+test/coverage
