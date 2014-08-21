@@ -6,7 +6,7 @@ module.exports = (config) ->
     basePath: ""
     
     # Testing framework to be used, default is `jasmine`.
-    frameworks: ["mocha"]
+    frameworks: ["qunit"]
     
     # List of files / patterns to load in the browser.
     files: [

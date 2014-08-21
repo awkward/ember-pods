@@ -1,10 +1,9 @@
-describe "Integration test:", ->
-  beforeEach ->
-    App.reset()
+module "Integration test:", ->
+  setup: ->
+    Ember.run ->
+      App.reset()
 
-  describe "The first test", ->
-    it "should pass", (done) ->
-      visit "/"
-      andThen ->
-        expect($("body")).to.have.length 1
-        done()
+test "The first test", ->
+  visit "/"
+  andThen ->
+    equal $("body").length, 1

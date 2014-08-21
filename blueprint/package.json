@@ -28,8 +28,7 @@
     "karma-coverage": "^0.2.6",
     "karma-mocha": "^0.1.7",
     "karma-phantomjs-launcher": "^0.1.4",
-    "mocha": "^1.21.4",
-    "chai": "^1.9.1"
+    "karma-qunit": "^0.1.3"
   },
   "dependencies": {
     "matchdep": "^0.3.0"
