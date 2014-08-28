@@ -1,4 +1,13 @@
 App = require("app")["default"]
 App.setupForTesting()
-App.ApplicationAdapter = DS.FixtureAdapter.extend()
 App.injectTestHelpers()
+
+exists = (selector) ->
+  !!find(selector).length
+stubEndpointForHttpRequest = (url, json) ->
+  $.mockjax
+    url: url
+    dataType: "json"
+    responseText: json
+$.mockjaxSettings.logging = false
+$.mockjaxSettings.responseTime = 0

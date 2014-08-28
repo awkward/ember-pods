@@ -7,16 +7,24 @@ module.exports = (config) ->
     
     # Testing framework to be used, default is `jasmine`.
     frameworks: ["qunit"]
+
+    plugins: [
+      'karma-qunit'
+      'karma-coverage'
+      'karma-coffee-preprocessor'
+      'karma-chrome-launcher'
+      'karma-phantomjs-launcher'
+    ]
     
     # List of files / patterns to load in the browser.
     files: [
-      "bower_components/jquery/dist/jquery.min.js"
-      "bower_components/handlebars/handlebars.runtime.js"
-      "bower_components/ember/ember.js"
-      "bower_components/ember-data/ember-data.js"
-      "node_modules/chai/chai.js"
       "tmp/build/script/vendor.js"
       "tmp/build/script/app.js"
+
+      "node_modules/faker/faker.js"
+      "bower_components/ember-data-factory-guy/dist/ember-data-factory-guy.js"
+      "test/factories/*.coffee"
+
       "test/support/*.coffee"
       "test/integration/*.coffee"
       "test/unit/*.coffee"
