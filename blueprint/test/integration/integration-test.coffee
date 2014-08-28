@@ -1,4 +1,4 @@
-StoryTestHelper = Ember.Object.createWithMixins FactoryGuyTestMixin,
+TestHelper = Ember.Object.createWithMixins FactoryGuyTestMixin,
   setup: (app, opts) ->    
     app.reset()
     $.mockjaxSettings.logging = false
