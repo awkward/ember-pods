@@ -26,10 +26,9 @@
     "karma": "^0.12.21",
     "karma-coffee-preprocessor": "^0.2.1",
     "karma-coverage": "^0.2.6",
-    "karma-mocha": "^0.1.7",
     "karma-phantomjs-launcher": "^0.1.4",
-    "mocha": "^1.21.4",
-    "chai": "^1.9.1"
+    "karma-qunit": "^0.1.3",
+    "faker": "git+https://github.com/jchn/Faker.js.git#amd"
   },
   "dependencies": {
     "matchdep": "^0.3.0"

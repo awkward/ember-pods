@@ -1,10 +1,19 @@
-describe "Integration test:", ->
-  beforeEach ->
-    App.reset()
+TestHelper = Ember.Object.createWithMixins FactoryGuyTestMixin,
+  setup: (app, opts) ->    
+    app.reset()
+    $.mockjaxSettings.logging = false
+    $.mockjaxSettings.responseTime = 0
+    this._super(app)
 
-  describe "The first test", ->
-    it "should pass", (done) ->
-      visit "/"
-      andThen ->
-        expect($("body")).to.have.length 1
-        done()
+  teardown: ->
+    $.mockjaxClear()
+    this._super()
+
+module "Integration test:", ->
+  setup: ->
+  teardown: ->
+
+test "The first test", ->
+  visit "/"
+  andThen ->
+    equal $("body").length, 1
