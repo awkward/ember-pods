@@ -22,6 +22,7 @@ module.exports = (config) ->
       "tmp/build/script/app.js"
 
       "node_modules/faker/faker.js"
+      "bower_components/jquery-mockjax/jquery.mockjax.js"
       "bower_components/ember-data-factory-guy/dist/ember-data-factory-guy.js"
       "test/factories/*.coffee"
 
