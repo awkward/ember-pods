@@ -1,8 +1,9 @@
 `import Resolver from 'resolver';`
 
 App = Ember.Application.create
-  Store:        DS.Store.extend()
   modulePrefix: 'ember-starter'
   Resolver:     Resolver
+
+App.ApplicationStore = DS.Store.extend()
 
 `export default App`
