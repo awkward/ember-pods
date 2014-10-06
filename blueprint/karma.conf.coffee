@@ -20,15 +20,10 @@ module.exports = (config) ->
     files: [
       "tmp/build/script/vendor.js"
       "tmp/build/script/app.js"
-
-      "node_modules/faker/faker.js"
       "bower_components/jquery-mockjax/jquery.mockjax.js"
-      "bower_components/ember-data-factory-guy/dist/ember-data-factory-guy.js"
-      "test/factories/*.coffee"
-
-      "test/support/*.coffee"
-      "test/integration/*.coffee"
-      "test/unit/*.coffee"
+      "tmp/build/script/tests.js"
+      "tmp/transpiled/test/support/initializer.js"
+      "test/support/loader.coffee"
     ]
     preprocessors:
       "**/*.coffee": ["coffee"]
