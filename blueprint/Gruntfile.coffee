@@ -8,6 +8,9 @@ module.exports = (grunt) ->
   # grunt build - build, watch + livereload
   grunt.registerTask 'build', ['build:once', 'watch']
 
+  # grunt test - setup test files
+  grunt.registerTask 'test', ['build:once', 'coffee:test', 'transpile:test', 'concat:test']
+
   # grunt build:production - build once for production (concatenated, minified, gzipped
   # grunt.registerTask 'build:production', ->
   #   grunt.log.writeln 'Building for production'
@@ -45,6 +48,14 @@ module.exports = (grunt) ->
             rename: (destBase, destPath) ->
               return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
           )
+      test:
+        options:
+          bare: true
+        files:
+          grunt.file.expandMapping(['test/**/*.coffee'], 'tmp/js/test/',
+          rename: (destBase, destPath) ->
+            return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
+          )
 
     ###########
     # Transpile ES6 modules to AMD
@@ -58,6 +69,14 @@ module.exports = (grunt) ->
           src: ['**/*.js', '!helpers/**/*.js'],
           dest: 'tmp/transpiled'
         ]
+      test:
+        type: 'amd'
+        files: [
+          expand: true,
+          cwd: 'tmp/js/test/',
+          src: ['**/*.js'],
+          dest: 'tmp/transpiled/test'
+        ]
 
     ###########
     # Concatenate vendor files and app files
@@ -67,7 +86,7 @@ module.exports = (grunt) ->
         separator: ';'
       vendor:
         src: [
-            'bower_components/almond/almond.js'
+            'bower_components/loader/loader.js'
             'bower_components/jquery/dist/jquery.js'
             'bower_components/handlebars/handlebars.runtime.js'
             'bower_components/ember/ember.js'
@@ -83,6 +102,14 @@ module.exports = (grunt) ->
         ]
         dest:
           'tmp/build/script/app.js'
+      test:
+        src: [
+          'bower_components/ember-qunit/dist/globals/main.js'
+          'bower_components/ember-data-factory/dist/ember-data-factory-1.0.amd.js'
+          'tmp/transpiled/test/**/*.js'
+        ]
+        dest:
+          'tmp/build/script/tests.js'
 
     ###########
     # Compile and concatenate *.styl files
