@@ -1,6 +1,7 @@
 ########################
 # Watch CoffeeScript, Stylus and templates for changes
 ########################
+
 module.exports = (grunt) ->
   watch:
     scripts:

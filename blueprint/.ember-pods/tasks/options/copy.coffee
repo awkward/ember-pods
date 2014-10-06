@@ -1,6 +1,7 @@
 ########################
 # Copy static files over
 ########################
+
 module.exports = (grunt) ->
   copy:
     main:

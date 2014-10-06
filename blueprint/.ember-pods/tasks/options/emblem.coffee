@@ -1,6 +1,7 @@
 ########################
 # Compile and concatenate *.emblem templates in a single file
 ########################
+
 module.exports = (grunt) ->
   emblem:
     compile:
