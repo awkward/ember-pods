@@ -1,13 +1,24 @@
-App = require("app")["default"]
-App.setupForTesting()
-App.injectTestHelpers()
+`import Application from 'app';`
+`import Router from 'router';`
+`import Resolver from 'resolver';`
 
-exists = (selector) ->
-  !!find(selector).length
-stubEndpointForHttpRequest = (url, json) ->
-  $.mockjax
-    url: url
-    dataType: "json"
-    responseText: json
-$.mockjaxSettings.logging = false
-$.mockjaxSettings.responseTime = 0
+# Using globals...for now
+emq.globalize()
+
+startApp = (attrs = {}) ->
+  App = null
+  Router.reopen
+    location: 'none'
+  Ember.run ->
+    App = Application.create(attrs)
+    App.ApplicationAdapter = DS.RESTAdapter.extend()
+    App.setupForTesting()
+    App.injectTestHelpers()
+
+  App.reset()
+
+  return App
+
+setResolver(Resolver.create());
+
+`export default startApp`
