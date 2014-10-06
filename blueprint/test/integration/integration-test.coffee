@@ -1,13 +1,11 @@
-TestHelper = Ember.Object.createWithMixins FactoryGuyTestMixin,
-  setup: (app, opts) ->    
-    app.reset()
-    $.mockjaxSettings.logging = false
-    $.mockjaxSettings.responseTime = 0
-    this._super(app)
+`import startApp from 'support/initializer'`
+App = null
 
+module "test",
+  setup: ->
+    App = startApp()
   teardown: ->
-    $.mockjaxClear()
-    this._super()
+    Ember.run(App, 'destroy')
 
 module "Integration test:", ->
   setup: ->
