@@ -25,7 +25,8 @@
     "loader": "stefanpenner/loader.js#1.0.1",
     "emblem": "~0.3.18",
     "jquery": "~2.1.1",
-    "jquery-mockjax": "~1.5.4"
+    "jquery-mockjax": "~1.5.4",
+    "ember-qunit": "~0.1.8"
   },
   "resolutions": {
     "jquery": "~2.1.1",
