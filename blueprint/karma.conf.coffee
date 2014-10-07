@@ -12,7 +12,6 @@ module.exports = (config) ->
       'karma-qunit'
       'karma-coverage'
       'karma-coffee-preprocessor'
-      'karma-chrome-launcher'
       'karma-phantomjs-launcher'
     ]
     
