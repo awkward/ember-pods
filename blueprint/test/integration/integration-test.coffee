@@ -7,10 +7,6 @@ module "test",
   teardown: ->
     Ember.run(App, 'destroy')
 
-module "Integration test:", ->
-  setup: ->
-  teardown: ->
-
 test "The first test", ->
   visit "/"
   andThen ->
