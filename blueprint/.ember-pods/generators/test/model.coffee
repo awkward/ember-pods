@@ -18,4 +18,4 @@ module.exports = (grunt) ->
     modelTestContentsProcessed = grunt.template.process(modelTestContents, {data: {modelName: modelName}})
 
     # write templates
-    grunt.file.write("#{modelPrefix}#{modelName}.coffee",    modelTestContentsProcessed)
+    grunt.file.write("#{modelPrefix}#{modelTestName}.coffee",    modelTestContentsProcessed)
