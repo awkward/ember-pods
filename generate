@@ -28,6 +28,7 @@ else if process.argv.length is 4
   switch type
     when 'pod'
       grunt.tasks(['generate:pod'], {name:name})
+      grunt.tasks(['generate:pod-test'], {name:name})
 
     when 'component'
       grunt.tasks(['generate:component'], {name:name})
