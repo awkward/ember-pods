@@ -12,3 +12,11 @@ module.exports = (grunt) ->
           rename: (destBase, destPath) ->
             return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
         )
+    test:
+      options:
+        bare: true
+      files:
+        grunt.file.expandMapping(['test/**/*.coffee'], 'tmp/js/test/',
+        rename: (destBase, destPath) ->
+          return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
+        )

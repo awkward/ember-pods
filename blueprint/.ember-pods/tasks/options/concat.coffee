@@ -8,7 +8,7 @@ module.exports = (grunt) ->
       separator: ';'
     vendor:
       src: [
-          'bower_components/almond/almond.js'
+          'bower_components/loader/loader.js'
           'bower_components/jquery/dist/jquery.js'
           'bower_components/handlebars/handlebars.runtime.js'
           'bower_components/ember/ember.js'
@@ -24,3 +24,12 @@ module.exports = (grunt) ->
       ]
       dest:
         'tmp/build/script/app.js'
+
+    test:
+      src: [
+        'bower_components/ember-qunit/dist/globals/main.js'
+        'bower_components/ember-data-factory/dist/ember-data-factory-1.0.amd.js'
+        'tmp/transpiled/test/**/*.js'
+      ]
+      dest:
+        'tmp/build/script/tests.js'
