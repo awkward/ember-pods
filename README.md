@@ -9,17 +9,17 @@ Ember.js starter kit based on pods file structure
 
 - CoffeeScript
 - Stylus + Nib
-- ES6 module system (using AMD + Almond.js)
+- ES6 module system (using AMD + loader.js)
 - Emblem templating
 - Grunt + livereload
 
 ## Using the generator
 From within a terminal at root level, run:
 
-* `./generate pod <podname>`
-* `./generate model <modelname>`
-* `./generate component <componentname>`
-* `./generate helper <helpername>`
+* `emberpods pod <podname>`
+* `emberpods model <modelname>`
+* `emberpods component <componentname>`
+* `emberpods helper <helpername>`
 
 ## Starting the project
 
