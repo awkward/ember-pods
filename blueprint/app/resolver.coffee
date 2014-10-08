@@ -94,7 +94,7 @@ Ember.Application.initializer
 
       # return a list of known models by looping over the requirejs modules starting with models/
       catalogEntriesByType: (type) ->
-        entries = requirejs._defined
+        entries = requirejs.entries
         types   = Ember.A()
 
         for key of entries
