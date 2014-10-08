@@ -4,7 +4,7 @@ app     = express()
 app.use express.static('tmp/build') 
 
 app.get '*', (req, res) ->
-  res.sendfile('tmp/build/index.html')
+  res.sendFile(path.join(process.cwd(), 'tmp', 'build', 'index.html'))
 
 app.listen(3000)
 
