@@ -8,6 +8,7 @@ module.exports = (grunt) ->
 
   # load generator tasks
   grunt.task.loadTasks path.join(process.cwd(), '.ember-pods', 'generators')
+  grunt.task.loadTasks path.join(process.cwd(), '.ember-pods', 'generators/test')
 
   # load external tasks
   grunt.task.loadTasks path.join(process.cwd(), '.ember-pods', 'tasks')
