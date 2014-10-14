@@ -10,7 +10,6 @@ bower_components
 # Local files
 temp
 
-
 # SASS
 .sass-cache
 
@@ -20,3 +19,5 @@ npm-debug.log
 
 # test
 test/coverage
+
+astronaut.js
