@@ -1,16 +1,16 @@
 {
-  "name": "ember-pods",
+  "name": "astronaut",
   "version": "0.0.4",
   "description": "Ember starter kit based on a pods file structure",
   "main": "generate",
   "author": "Awkward",
   "license": "MIT",
   "bin": {
-    "astronaut": "astronaut.js",
+    "astronaut": "./bin/index.js",
     "emberpods": "./generate"
   },
   "scripts":{
-    "prepublish": "echo '#!/usr/bin/env node' > astronaut.js && coffee -p astronaut.coffee >> astronaut.js"
+    "prepublish": "coffee -c -o ./lib ./src/*.coffee"
   },
   "devDependencies": {
     "cli": "^0.6.4"
