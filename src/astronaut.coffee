@@ -1,5 +1,6 @@
 path = require('path')
-cli  = require('cli');
+cli  = require('cli')
+core = require('../lib/core')
 
 # configure cli
 cli.width = 200
@@ -11,6 +12,7 @@ cli.parse(
     port:               ['p', 'Set the server port', 'number','3000']
     'skip-tests':       [false, 'Skip generating tests when generating application parts']
     'no-live-reload':   [false, 'Don\'t live reload on file changes']
+    'force':            ['f', 'Force action']
   ,
     init:       'Initialize new Astronaut project in current directory'
     new:        'Initialize new Astronaut project with given name'
@@ -21,8 +23,4 @@ cli.parse(
   )
 
 # handle commands
-cli.main (args, options) ->
-  @info('CWD:'          + process.cwd())
-  @info('Command:'      + cli.command)
-  @info('Environment:'  + options.env)
-  @info('Args:'         + args.toString())
+cli.main(core.handle)
