@@ -3,24 +3,14 @@
 ########################
 
 module.exports = (grunt) ->
-  watch:
-    scripts:
-      files: 'app/**/*.coffee'
-      tasks: ['newer:coffee', 'transpile', 'concat:app']
-      options:
-        spawn: false
-        livereload: true
-
-    templates:
-      files: 'app/**/*.emblem'
-      tasks: ['newer:emblem', 'concat:app']
-      options:
-        spawn: false
-        livereload: true
-
-    stylesheets:
-      files: 'app/**/*.styl'
-      tasks: ['stylus']
-      options:
-        spawn: false
-        livereload: true
+  esteWatch:
+    options:
+      dirs: [
+        './app/**'
+      ]
+      livereload:
+        extensions: ['coffee', 'styl', 'emblem']
+        enabled: true
+    'coffee': (filepath) -> ['coffee', 'transpile', 'concat:app']
+    'emblem': (filepath) -> ['emblem', 'concat:app']
+    'styl': (filepath) -> ['stylus']
