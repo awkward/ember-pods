@@ -1,10 +1,10 @@
 # Karma configuration
 module.exports = (config) ->
   config.set
-    
+
     # Base path that will be used to resolve files and exclude.
     basePath: ""
-    
+
     # Testing framework to be used, default is `jasmine`.
     frameworks: ["qunit"]
 
@@ -14,7 +14,7 @@ module.exports = (config) ->
       'karma-coffee-preprocessor'
       'karma-phantomjs-launcher'
     ]
-    
+
     # List of files / patterns to load in the browser.
     files: [
       "tmp/build/script/vendor.js"
@@ -22,6 +22,7 @@ module.exports = (config) ->
       "bower_components/jquery-mockjax/jquery.mockjax.js"
       "tmp/build/script/tests.js"
       "tmp/transpiled/test/support/initializer.js"
+      "test/support/helpers.coffee"
       "test/support/loader.coffee"
     ]
     preprocessors:
@@ -34,20 +35,20 @@ module.exports = (config) ->
 
     # List of files to exclude.
     exclude: []
-    
+
     # Test results reporter to use.
     # Possible values: 'dots', 'progress', 'junit'
     reporters: ["progress", "coverage"]
-    
+
     # Web server port.
     port: 9876
-    
+
     # Cli runner port.
     runnerPort: 9100
-    
+
     # Enable / disable colors in the output (reporters and logs).
     colors: true
-    
+
     # Level of logging. Possible values are:
     #
     # * LOG_DISABLE
@@ -56,11 +57,11 @@ module.exports = (config) ->
     # * LOG_INFO
     # * LOG_DEBUG
     logLevel: config.LOG_INFO
-    
+
     # Enable / disable watching files and executing tests whenever any of them
     # changes.
     autoWatch: true
-    
+
     # Start these browsers, currently available:
     # - Chrome
     # - ChromeCanary
@@ -70,10 +71,10 @@ module.exports = (config) ->
     # - PhantomJS
     # - IE (only Windows)
     browsers: ["PhantomJS"]
-    
+
     # If the browser does not capture in the given timeout [ms], then kill it.
     captureTimeout: 60000
-    
+
     # Continuous Integration mode.
     # If it's `true`, then it captures browsers, runs the tests and exits.
     singleRun: false
