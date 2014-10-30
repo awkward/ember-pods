@@ -7,6 +7,8 @@ module.exports = (grunt) ->
     options:
       dirs: [
         './app/**'
+        './test/**'
+        '!./test/coverage/**'
       ]
       livereload:
         extensions: ['coffee', 'styl', 'emblem']

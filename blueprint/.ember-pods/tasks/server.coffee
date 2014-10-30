@@ -3,4 +3,4 @@
 ########################
 
 module.exports = (grunt) ->
-  grunt.registerTask 'server', ['build:once', 'express', 'esteWatch']
+  grunt.registerTask 'server', ['build:once', 'express', 'concurrent:build']

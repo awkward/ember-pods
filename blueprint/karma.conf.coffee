@@ -13,6 +13,7 @@ module.exports = (config) ->
       'karma-coverage'
       'karma-coffee-preprocessor'
       'karma-phantomjs-launcher'
+      'karma-spec-reporter'
     ]
 
     # List of files / patterns to load in the browser.
@@ -38,7 +39,7 @@ module.exports = (config) ->
 
     # Test results reporter to use.
     # Possible values: 'dots', 'progress', 'junit'
-    reporters: ["progress", "coverage"]
+    reporters: ["spec", "coverage"]
 
     # Web server port.
     port: 9876
