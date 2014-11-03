@@ -11,10 +11,10 @@ module.exports = (grunt) ->
   sass:
     compile:
       options:
-        includePaths: [require('node-bourbon').includePaths].concat('app/assets/stylesheets/imports').concat(importsCssBundle(grunt))
+        includePaths: [
+          require('node-bourbon').includePaths
+          'app/assets/stylesheets/imports/'
+          'bower_components/bootstrap-sass-twbs/assets/stylesheets/'
+        ].concat(importsCssBundle(grunt))
       files:
-        'tmp/build/stylesheets/main.css':[
-          'app/assets/stylesheets/main.sass'
-          'app/pods/**/*.sass'
-          'app/components/**/*.sass'
-        ]
+        'tmp/build/stylesheets/main.css': 'app/assets/stylesheets/main.sass'

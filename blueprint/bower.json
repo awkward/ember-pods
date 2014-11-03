@@ -27,7 +27,8 @@
     "emblem": "~0.3.18",
     "jquery": "~2.1.1",
     "jquery-mockjax": "~1.5.4",
-    "ember-qunit": "~0.1.8"
+    "ember-qunit": "~0.1.8",
+    "bootstrap-sass-twbs": "~3.3.0"
   },
   "resolutions": {
     "jquery": "~2.1.1",
