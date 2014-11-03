@@ -23,6 +23,7 @@
     "ember": "~1.7.0",
     "ember-data": "~1.0.0-beta.10",
     "loader": "stefanpenner/loader.js#1.0.1",
+    "ember-data-factory": "1.0.0",
     "emblem": "~0.3.18",
     "jquery": "~2.1.1",
     "jquery-mockjax": "~1.5.4",
