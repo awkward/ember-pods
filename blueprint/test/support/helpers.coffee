@@ -1,11 +1,15 @@
 # Model helpers
 
-QUnit.assert.belongsTo = (model, msg) ->
+QUnit.assert.belongsTo = (subject, belongsTo) ->
 
-  relationship = Ember.get(val, 'relationshipsByName').get(exp)
+  mdl = subject()
+  relationship = Ember.get(mdl.get('constructor'), 'relationshipsByName').get(belongsTo)
+  @push(relationship.kind is 'belongsTo', relationship.kind, 'belongsTo', "#{mdl.get('constructor').toString().toLowerCase()} should belong to #{belongsTo}")
 
-  @push(relationship.kind is 'belongsTo', relationship.kind, 'belongsTo', msg)
+QUnit.assert.hasMany = (subject, hasMany) ->
 
-# QUnit.assert.hasMany = (val, exp, msg) ->
+  mdl = subject()
+  relationship = Ember.get(mdl.get('constructor'), 'relationshipsByName').get(hasMany)
+  @push(relationship.kind is 'hasMany', relationship.kind, 'hasMany', "#{mdl.get('constructor').toString().toLowerCase()} should have many #{hasMany}")
 
-  # @push(res, act, exp, msg)
+window.assert = QUnit.assert

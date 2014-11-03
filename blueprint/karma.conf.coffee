@@ -24,6 +24,7 @@ module.exports = (config) ->
       "tmp/build/script/tests.js"
       "tmp/transpiled/test/support/initializer.js"
       "test/support/helpers.coffee"
+      "test/support/helpers.coffee"
       "test/support/loader.coffee"
     ]
     preprocessors:
