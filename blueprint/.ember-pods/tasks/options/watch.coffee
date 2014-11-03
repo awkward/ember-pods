@@ -11,8 +11,8 @@ module.exports = (grunt) ->
         '!./test/coverage/**'
       ]
       livereload:
-        extensions: ['coffee', 'styl', 'emblem']
+        extensions: ['coffee', 'sass', 'emblem']
         enabled: true
     'coffee': (filepath) -> ['coffee', 'transpile', 'concat:app']
     'emblem': (filepath) -> ['emblem', 'concat:app']
-    'styl': (filepath) -> ['stylus']
+    'sass': (filepath) -> ['styles']
