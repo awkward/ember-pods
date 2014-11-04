@@ -7,16 +7,16 @@ module.exports = (grunt) ->
     compile:
       options:
         bare: true
-      files:
-        grunt.file.expandMapping(['app/**/*.coffee'], 'tmp/js/',
-          rename: (destBase, destPath) ->
-            return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
-        )
+      expand: true
+      cwd: 'app'
+      src: ['**/*.coffee']
+      dest: 'tmp/js/'
+      ext: '.js'
     test:
       options:
         bare: true
-      files:
-        grunt.file.expandMapping(['test/**/*.coffee'], 'tmp/js/test/',
-        rename: (destBase, destPath) ->
-          return destBase + destPath.slice(4, destPath.length).replace(/\.coffee$/, '.js')
-        )
+      expand: true
+      cwd: 'test'
+      src: ['**/*.coffee']
+      dest: 'tmp/js/test/'
+      ext: '.js'
