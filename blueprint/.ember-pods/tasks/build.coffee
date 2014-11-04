@@ -4,8 +4,8 @@
 ########################
 
 module.exports = (grunt) ->
-  grunt.registerTask 'build', ['build:once', 'esteWatch']
-  grunt.registerTask 'build:once', ['clean:all', 'coffee', 'transpile', 'emblem', 'stylus', 'concat', 'copy']
-  grunt.registerTask 'test', ['build:once', 'coffee:test', 'transpile:test', 'concat:test']
 
+  grunt.registerTask 'styles', ['sass_include', 'sass']
+  grunt.registerTask 'build:once', ['clean:all', 'coffee', 'transpile', 'emblem', 'styles', 'concat', 'copy']
+  grunt.registerTask 'build', ['build:once', 'esteWatch']
   grunt.registerTask 'build:prod', ['build:once', 'copy:prod', 'uglify', 'cssmin', 'htmlmin', 'compress']
