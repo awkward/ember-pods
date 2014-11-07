@@ -30,7 +30,7 @@ module.exports = (config) ->
       'tmp/build/script/app.js': ['coverage']
 
     coverageReporter:
-      type: 'html'
+      type: 'json'
       dir: './test/coverage'
 
     # List of files to exclude.

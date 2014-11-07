@@ -7,10 +7,11 @@ module.exports = (grunt) ->
     compile:
       options:
         bare: true
+        sourceMap: true
       expand: true
       cwd: 'app'
       src: ['**/*.coffee']
-      dest: 'tmp/js/'
+      dest: 'tmp/js/app/'
       ext: '.js'
     test:
       options:

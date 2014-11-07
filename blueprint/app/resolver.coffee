@@ -9,7 +9,7 @@ ResolverHelpers =
 
   # resolve different parts of the app like routes, router, controllers..
   routerResolver: (what) ->
-    return require('router')["default"]
+    return require('app/router')["default"]
 
   podResolver: (what) ->
     {type, name} = ResolverHelpers.parse(what)
@@ -21,7 +21,7 @@ ResolverHelpers =
 
     # try to resolve
     try
-      module = require("pods/#{name}/#{type}")
+      module = require("app/pods/#{name}/#{type}")
       return module["default"]
     catch e
       return false
@@ -29,7 +29,7 @@ ResolverHelpers =
   componentResolver: (what) ->
     {type, name} = ResolverHelpers.parse(what)
     try
-      module = require("components/#{name}/component")
+      module = require("app/components/#{name}/component")
       return module["default"]
     catch e
       return false
@@ -50,19 +50,19 @@ ResolverHelpers =
     if name.indexOf('.')
       name = name.replace('.', '/')
 
-    # return ordinary template    
+    # return ordinary template
     return Ember.TEMPLATES["app/pods/#{name}/template"]
 
   modelResolver: (what) ->
     {type, name} = ResolverHelpers.parse(what)
 
     try
-      module = require("models/#{name}")["default"]
+      module = require("app/models/#{name}")["default"]
       module.toString = -> Ember.String.classify(name)
       return module
     catch e
       return false
-    
+
 
 
 Resolver = Ember.DefaultResolver.extend
