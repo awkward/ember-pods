@@ -1,6 +1,6 @@
-`import Application from 'app';`
-`import Router from 'router';`
-`import Resolver from 'resolver';`
+`import Application from 'app/app';`
+`import Router from 'app/router';`
+`import Resolver from 'app/resolver';`
 
 document.write '<div id="ember-testing-container"><div id="ember-testing"></div></div>'
 

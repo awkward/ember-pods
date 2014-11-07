@@ -1,4 +1,4 @@
-`import startApp from 'support/initializer'`
+`import startApp from 'test/support/initializer'`
 App = null
 
 module '<%= podName %>',
