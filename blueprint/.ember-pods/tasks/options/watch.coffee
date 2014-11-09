@@ -13,6 +13,6 @@ module.exports = (grunt) ->
       livereload:
         extensions: ['coffee', 'sass', 'emblem']
         enabled: true
-    'coffee': (filepath) -> ['coffee', 'transpile', 'concat:app']
-    'emblem': (filepath) -> ['emblem', 'concat:app']
+    'coffee': (filepath) -> ['coffee', 'transpile', 'multi_stage_sourcemap', 'concat_sourcemap:app']
+    'emblem': (filepath) -> ['emblem', 'transpile', 'multi_stage_sourcemap', 'concat_sourcemap:app']
     'sass': (filepath) -> ['styles']
