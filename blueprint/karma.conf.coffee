@@ -23,6 +23,8 @@ module.exports = (config) ->
       "bower_components/jquery-mockjax/jquery.mockjax.js"
       "tmp/build/script/tests.js"
       "tmp/transpiled/test/support/initializer.js"
+      "test/support/helpers.coffee"
+      "test/support/helpers.coffee"
       "test/support/loader.coffee"
     ]
     preprocessors:
