@@ -26,6 +26,7 @@
     "grunt-emblem": "^0.1.0",
     "grunt-sass": "^0.16.0",
     "grunt-sass-include": "^0.1.0",
+    "grunt-shell": "^1.1.1",
     "node-bourbon": "^1.2.3",
     "node-sass": "^1.2.2",
     "grunt-este-watch": "^0.1.18",

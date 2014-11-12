@@ -62,7 +62,7 @@ module.exports = (config) ->
 
     # Enable / disable watching files and executing tests whenever any of them
     # changes.
-    autoWatch: true
+    autoWatch: false
 
     # Start these browsers, currently available:
     # - Chrome
