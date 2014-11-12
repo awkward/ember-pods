@@ -18,7 +18,8 @@ module.exports = (grunt) ->
         sourceMap: true
         sourcesContent: true
       files: 'tmp/build/script/app.js' : [
-        'tmp/js/templates.js',
+        'tmp/js/app/templates.js'
+        'tmp/js/app/helpers/**/*.js'
         'tmp/transpiled/app/**/*.js'
         '!tmp/transpiled/test/**/*.js'
       ]
@@ -26,6 +27,6 @@ module.exports = (grunt) ->
     test:
       files: 'tmp/build/script/tests.js' : [
         'bower_components/ember-qunit/dist/globals/main.js'
-        'bower_components/ember-data-factory/dist/ember-data-factory-1.0.amd.js'
+        'bower_components/ember-data-factory-guy/dist/ember-data-factory-guy.js'
         'tmp/transpiled/test/**/*.js'
       ]
