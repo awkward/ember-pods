@@ -12,7 +12,7 @@ module.exports = (grunt) ->
       files: [
         expand: true,
         cwd: 'tmp/js/',
-        src: ['**/*.js', '!test/**/*.js'],
+        src: ['**/*.js', '!test/**/*.js', '!app/helpers/**/*.js'],
         dest: 'tmp/transpiled'
       ]
     test:
