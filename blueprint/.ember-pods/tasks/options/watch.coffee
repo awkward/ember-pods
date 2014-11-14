@@ -7,10 +7,16 @@ module.exports = (grunt) ->
     options:
       dirs: [
         './app/**'
+        './test/**'
+        '!./test/coverage/**'
       ]
       livereload:
-        extensions: ['coffee', 'styl', 'emblem']
+        extensions: ['coffee', 'sass', 'emblem']
         enabled: true
-    'coffee': (filepath) -> ['coffee', 'transpile', 'concat:app']
-    'emblem': (filepath) -> ['emblem', 'concat:app']
-    'styl': (filepath) -> ['stylus']
+    'coffee': (filepath) -> ['coffee', 'transpile', 'multi_stage_sourcemap', 'concat_sourcemap:app', 'concat_sourcemap:test', 'shell:karma']
+    'emblem': (filepath) -> ['emblem', 'transpile', 'multi_stage_sourcemap', 'concat_sourcemap:app', 'concat_sourcemap:test', 'shell:karma']
+    'sass': (filepath) -> ['styles']
+
+  shell:
+    karma:
+      command: 'karma run'

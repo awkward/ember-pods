@@ -1,4 +1,4 @@
-`import Resolver from 'resolver';`
+`import Resolver from 'app/resolver';`
 
 App = Ember.Application.extend
   ApplicationStore: DS.Store.extend()

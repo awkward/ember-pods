@@ -6,7 +6,7 @@ module.exports = (grunt) ->
   emblem:
     compile:
       files:
-        'tmp/js/templates.js': ['app/**/*.emblem']
+        'tmp/js/app/templates.js': ['app/**/*.emblem']
 
       options:
         dependencies:

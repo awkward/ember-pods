@@ -37,6 +37,7 @@ else if process.argv.length is 4
     when 'model'
       grunt.tasks(['generate:model'], {name:name})
       grunt.tasks(['generate:model-test'], {name:name})
+      grunt.tasks(['generate:factory'], {name:name})
 
     when 'helper'
       grunt.tasks(['generate:helper'], {name:name})

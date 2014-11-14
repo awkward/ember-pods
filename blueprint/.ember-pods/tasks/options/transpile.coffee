@@ -5,18 +5,24 @@
 module.exports = (grunt) ->
   transpile:
     main:
-      type: 'amd'
+      options:
+        format: 'amd'
+        sourcemaps: true
+        base: 'tmp/js/'
       files: [
         expand: true,
         cwd: 'tmp/js/',
-        src: ['**/*.js', '!helpers/**/*.js'],
+        src: ['**/*.js', '!test/**/*.js', '!app/helpers/**/*.js'],
         dest: 'tmp/transpiled'
       ]
     test:
-      type: 'amd'
+      options:
+        format: 'amd'
+        sourcemaps: false
+        base: 'tmp/js/'
       files: [
         expand: true,
-        cwd: 'tmp/js/test/',
-        src: ['**/*.js'],
-        dest: 'tmp/transpiled/test'
+        cwd: 'tmp/js/',
+        src: ['**/*.js', '!app/**/*.js'],
+        dest: 'tmp/transpiled'
       ]

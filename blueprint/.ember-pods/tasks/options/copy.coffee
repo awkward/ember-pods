@@ -16,3 +16,8 @@ module.exports = (grunt) ->
       cwd: 'app/assets/'
       src: ['**/*', '!stylesheets/main.sass']
       dest: 'tmp/build/assets/'
+    prod:
+      expand: true
+      cwd: 'tmp/build/assets/'
+      src: ['**/*.{png,jpg,jpeg,gif}']
+      dest: 'tmp/prod/assets/'
