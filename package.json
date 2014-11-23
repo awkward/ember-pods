@@ -9,11 +9,12 @@
     "astronaut": "./bin/index.js",
     "emberpods": "./generate"
   },
-  "scripts":{
+  "scripts": {
     "prepublish": "coffee -c -o ./lib ./src/*.coffee"
   },
   "devDependencies": {
-    "cli": "^0.6.4"
+    "cli": "^0.6.4",
+    "ncp": "^1.0.1"
   },
   "repository": {
     "type": "git",

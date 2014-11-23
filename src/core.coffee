@@ -6,7 +6,8 @@ class core
     cli.info('CWD:'          + process.cwd())
     cli.info('Command:'      + cli.command)
     cli.info('Environment:'  + options.env)
-    cli.info('Args:'         + args.toString())
+    cli.info('Args:',        + args.toString())
+    cli.info('Options:',       options)
 
     this[cli.command].call(this, args, options) if this[cli.command]
 

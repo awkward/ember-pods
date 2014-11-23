@@ -9,10 +9,11 @@ cli.parsePackageJson(path.join(__dirname, '..','package.json'))
 
 # publish available options
 cli.parse(
-    port:               ['p', 'Set the server port', 'number','3000']
+    port:               ['p',   'Set the server port', 'number','3000']
     'skip-tests':       [false, 'Skip generating tests when generating application parts']
     'no-live-reload':   [false, 'Don\'t live reload on file changes']
-    'force':            ['f', 'Force action']
+    'force':            ['f',   'Force action']
+    'verbose':          [false, 'Verbose process logging']
   ,
     init:       'Initialize new Astronaut project in current directory'
     new:        'Initialize new Astronaut project with given name'
