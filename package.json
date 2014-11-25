@@ -13,8 +13,7 @@
     "prepublish": "coffee -c -o ./lib ./src/*.coffee"
   },
   "devDependencies": {
-    "cli": "^0.6.4",
-    "ncp": "^1.0.1"
+    "cli": "^0.6.4"
   },
   "repository": {
     "type": "git",
@@ -23,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/awkward/ember-pods/issues"
   },
-  "homepage": "https://github.com/awkward/ember-pods"
+  "homepage": "https://github.com/awkward/ember-pods",
+  "dependencies": {
+    "fs-extra": "^0.12.0"
+  }
 }
