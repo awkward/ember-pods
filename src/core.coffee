@@ -6,10 +6,10 @@ class core
     this[cli.command].call(this, args, options) if this[cli.command]
 
   new: (args, options) ->
-    cli.debug("TODO: generate new project named #{args[0]}")
+    ProjectScaffold.new(args, options, process.cwd(), args[0])
 
   init: (args, options) ->
-    ProjectScaffold.setup(args, options, process.cwd())
+    ProjectScaffold.init(args, options, process.cwd())
 
   generate: (args, options) ->
     cli.debug("TODO: fire up ol' generator")

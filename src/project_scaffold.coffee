@@ -9,11 +9,18 @@ class ProjectScaffold
   bower_install_command:  "bower install"
   npm_install_command:    "npm install"
 
-  setup: (@args, @options, @path) =>
+  init: (@args, @options, @path) =>
     unless @options.force or @_directoryEmpty(@path)
       cli.fatal("Directory #{@path} is not empty. pass -f or --force to force")
 
     @_setupStructure()
+
+  new: (@args, @options, @path, name) =>
+    @path = "#{@path}/#{name}"
+    fs.ensureDir @path, (err) =>
+      cli.fatal "Couldn't create directory. #{err}" if err
+      process.chdir(@path)
+      @_setupStructure()
 
   # setup basic project structure
   _setupStructure: ->
