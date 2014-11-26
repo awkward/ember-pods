@@ -58,7 +58,7 @@ class ProjectScaffold
       @_done()
 
   _done: ->
-    cli.ok "Setup succesful, project ready for takeof ;)"
+    cli.ok "Setup succesful, project ready for takeoff ;)"
 
   _directoryEmpty: (path) ->
     fs.readdirSync(path).length == 0
